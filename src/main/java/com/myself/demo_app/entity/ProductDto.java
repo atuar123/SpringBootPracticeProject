@@ -1,12 +1,16 @@
 package com.myself.demo_app.entity;
 
-import javax.validation.constraints.NotEmpty;
+import lombok.Data;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+@Data
 public class ProductDto {
     private Long id;
     @NotEmpty(message = "Name is mandatory")
     private String name;
-    @NotEmpty(message = "Price is Mandatory")
+    @NotNull(message = "Price is Mandatory")
     private Double price;
     private String description;
 }

@@ -11,9 +11,6 @@ import javax.validation.constraints.NotEmpty;
 @Data
 @Entity
 public class Product extends BaseModel{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private String name;
     private Double price;
     private String description;

@@ -3,11 +3,16 @@ package com.myself.demo_app.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
+@MappedSuperclass
 @Data
-public abstract class BaseModel {
-
+public abstract class BaseModel implements Serializable {
+    private static final long serialVersionUID =1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private  Long id;
     @Column(updatable = false)
     private String createdBy;
     @Temporal(TemporalType.TIMESTAMP)
@@ -24,8 +29,8 @@ public abstract class BaseModel {
         this.isActive = true;
     }
 
- //   @PostPersist
- //   public void setUpdateData(){
- //       this.updatedAt = new Date();
- //   }
+   @PreUpdate
+    public void setUpdateData(){
+       this.updatedAt = new Date();
+   }
 }
